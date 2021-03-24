@@ -18,17 +18,17 @@ def main():
             data = json_file["annotations"]
             view_name = ""
             for x in data:
-                if ("view/ap" in x["name"].lower()):
+                if "view/ap" in x["name"].lower():
                     view_name = "ap"
-                if ("view/ap_supine" in x["name"].lower()):
+                if "view/ap_supine" in x["name"].lower():
                     view_name = "supine"
-                if ("view/pa" in x["name"].lower()):
+                if "view/pa" in x["name"].lower():
                     view_name = "pa"
-                if ("view/lateral" in x["name"].lower()):
+                if "view/lateral" in x["name"].lower():
                     view_name = "lateral"
-                if ("view/coronal" in x["name"].lower()):
+                if "view/coronal" in x["name"].lower():
                     view_name = "coronal"
-                if ("view/axial" in x["name"].lower()):
+                if "view/axial" in x["name"].lower():
                     view_name = "axial"
 
             if view_name != "":
