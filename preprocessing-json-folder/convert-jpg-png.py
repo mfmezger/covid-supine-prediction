@@ -10,7 +10,8 @@ def main():
 
     for f in files:
 
-        if f.split(".")[1] == "jpg" or f.split(".")[1] == "jpeg" or f.split(".")[1] == "JPG" or f.split(".")[1] == "PNG":
+        if f.split(".")[1] == "jpg" or f.split(".")[1] == "jpeg" or f.split(".")[1] == "JPG" or f.split(".")[1] \
+                == "PNG":
             img = Image.open(path + f)
             img.save(path + f.split(".")[0] + ".png")
             os.remove(path + f)
