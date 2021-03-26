@@ -13,14 +13,14 @@ def main(hparams):
 
     # todo add WANDB.
 
-    train_dataset = ImageFolder(args.train_path)
+    train_dataset = ImageFolder()
     val_dataset = ImageFolder(args.val_path)
     test_dataset = ImageFolder(args.test_path)
 
     # initialize the model
     model = LitClassifier(training=True, hparams=hparams, batch_size=hparams.batch_size,
-                         train_dataset=train_dataset, val_dataset=val_dataset,
-                         test_dataset=test_dataset,  num_classes=2,learning_rate=hparams.learning_rate)
+                         train_path=args.train_path, val_path=args.val_path,
+                         test_path=args.test_path,  num_classes=2,learning_rate=hparams.learning_rate)
 
     # initialize loggers
     checkpoint_callback = ModelCheckpoint(filepath='pl_model/')
