@@ -4,16 +4,8 @@ import shutil
 from pathlib import Path
 
 
-
-
-
 def main():
-
-
     path = "/home/mfmezger/data/covid-19-dataset/"
-
-
-
     path_split = "/home/mfmezger/data/covid-19-dataset-split/"
 
     # define the paths and create the subfolders.
@@ -48,7 +40,6 @@ def main():
     pa_names = os.listdir(path+"pa/")
     lateral_names = os.listdir(path + "lateral/")
 
-
     # calculate the amount of trainings, val and test images.
     len_val_supine = int(len(supine_names) *0.1)
     len_val_ap = int(len(ap_names) *0.1)
@@ -60,10 +51,10 @@ def main():
     # select the images that should be moved
     # first random shuffle the images.
 
-    supine_names = random.shuffle(supine_names)
-    ap_names = random.shuffle(ap_names)
-    pa_names = random.shuffle(pa_names)
-    lateral_names = random.shuffle(lateral_names)
+    random.shuffle(supine_names)
+    random.shuffle(ap_names)
+    random.shuffle(pa_names)
+    random.shuffle(lateral_names)
 
     # slice the arrays for the test and val files.
 
