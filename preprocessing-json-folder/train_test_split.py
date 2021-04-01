@@ -1,4 +1,5 @@
 import os
+import random
 import shutil
 from pathlib import Path
 
@@ -42,22 +43,59 @@ def main():
     test = 0.
 
     # get the amount of images of every class that should be moved.
-    amount_supine = os.listdir(path+"supine/")
-    amount_ap = os.listdir(path+"ap/")
-    amount_pa = os.listdir(path+"pa/")
-    amount_lateral = os.listdir(path+"lateral/")
+    supine_names = os.listdir(path+"supine/")
+    ap_names = os.listdir(path+"ap/")
+    pa_names = os.listdir(path+"pa/")
+    lateral_names = os.listdir(path + "lateral/")
 
 
     # calculate the amount of trainings, val and test images.
-    len_val_supine = int(len(amount_supine) *0.1)
-    len_val_ap = int(len(amount_ap) *0.1)
-    len_val_pa = int(len(amount_pa) *0.1)
-    len_val_lateral = int(len(amount_lateral) *0.1)
-
-
-
+    len_val_supine = int(len(supine_names) *0.1)
+    len_val_ap = int(len(ap_names) *0.1)
+    len_val_pa = int(len(pa_names) *0.1)
+    len_val_lateral = int(len(lateral_names) * 0.1)
 
     # move for every folder.
+
+    # select the images that should be moved
+    # first random shuffle the images.
+
+    supine_names = random.shuffle(supine_names)
+    ap_names = random.shuffle(ap_names)
+    pa_names = random.shuffle(pa_names)
+    lateral_names = random.shuffle(lateral_names)
+
+    # slice the arrays for the test and val files.
+
+    # split image list.
+    test_list_supine =supine_names[0:len_val_supine]
+    val_list_supine =supine_names[len_val_supine+1:len_val_supine*2]
+    train_list_supine =supine_names[len_val_supine*2+1:]
+
+    test_list_ap =ap_names[0:len_val_ap]
+    val_list_ap =ap_names[len_val_ap+1:len_val_ap*2]
+    train_list_ap =ap_names[len_val_ap*2+1:]
+
+    test_list_pa =pa_names[0:len_val_pa]
+    val_list_pa =pa_names[len_val_pa+1:len_val_pa*2]
+    train_list_pa =pa_names[len_val_pa*2+1:]
+
+    test_list_lateral =lateral_names[0:len_val_lateral]
+    val_list_lateral =lateral_names[len_val_lateral+1:len_val_lateral*2]
+    train_list_lateral =lateral_names[len_val_lateral*2+1:]
+
+    # loop over the lists and move the images.
+    for n in supine_names:
+        if n in train_list_supine:
+            target = path_split + "train/" + n
+        if n in val_list_supine:
+            target = path_split + "val/" + n
+        if n in test_list_supine:
+            target = path_split + "test/" + n
+
+        origin = path + "supine/" + n
+        shutil.copyfile(origin, target)
+
 
 if __name__ == '__main__':
     main()
