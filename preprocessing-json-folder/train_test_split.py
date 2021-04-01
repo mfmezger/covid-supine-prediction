@@ -78,11 +78,11 @@ def main():
     # loop over the lists and move the images.
     for n in supine_names:
         if n in train_list_supine:
-            target = path_split + "train/" + n
+            target = path_split + "train/supine/" + n
         if n in val_list_supine:
-            target = path_split + "val/" + n
+            target = path_split + "val/supine/" + n
         if n in test_list_supine:
-            target = path_split + "test/" + n
+            target = path_split + "test/supine/" + n
 
         origin = path + "supine/" + n
         shutil.copyfile(origin, target)
