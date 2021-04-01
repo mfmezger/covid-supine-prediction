@@ -87,6 +87,39 @@ def main():
         origin = path + "supine/" + n
         shutil.copyfile(origin, target)
 
+    for n in ap_names:
+        if n in train_list_ap:
+            target = path_split + "train/ap/" + n
+        if n in val_list_ap:
+            target = path_split + "val/ap/" + n
+        if n in test_list_ap:
+            target = path_split + "test/ap/" + n
+
+        origin = path + "ap/" + n
+        shutil.copyfile(origin, target)
+
+    for n in pa_names:
+        if n in train_list_pa:
+            target = path_split + "train/pa/" + n
+        if n in val_list_pa:
+            target = path_split + "val/pa/" + n
+        if n in test_list_pa:
+            target = path_split + "test/pa/" + n
+
+        origin = path + "pa/" + n
+        shutil.copyfile(origin, target)
+
+    for n in lateral_names:
+        if n in train_list_lateral:
+            target = path_split + "train/lateral/" + n
+        if n in val_list_lateral:
+            target = path_split + "val/lateral/" + n
+        if n in test_list_lateral:
+            target = path_split + "test/lateral/" + n
+
+        origin = path + "lateral/" + n
+        shutil.copyfile(origin, target)
+
 
 if __name__ == '__main__':
     main()
