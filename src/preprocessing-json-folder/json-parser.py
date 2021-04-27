@@ -3,7 +3,7 @@ import os
 
 import pandas as pd
 
-path = "/home/mfmezger/data/covid-19-chest-x-ray-dataset/releases/covid-only/annotations/"
+path = "/home/mfmezger/data/covid-19-chest-x-ray-dataset/releases/all-images/annotations/"
 
 
 def main():

@@ -30,9 +30,8 @@ def main():
     Path(path_split + "val/lateral").mkdir(parents=False, exist_ok=True)
 
     # define the percentages for train,  val and test.
-    train = 0.8
     val = 0.1
-    test = 0.
+    test = 0.1
 
     # get the amount of images of every class that should be moved.
     supine_names = os.listdir(path+"supine/")
@@ -41,10 +40,10 @@ def main():
     lateral_names = os.listdir(path + "lateral/")
 
     # calculate the amount of trainings, val and test images.
-    len_val_supine = int(len(supine_names) *0.1)
-    len_val_ap = int(len(ap_names) *0.1)
-    len_val_pa = int(len(pa_names) *0.1)
-    len_val_lateral = int(len(lateral_names) * 0.1)
+    len_val_supine = int(len(supine_names) *val)
+    len_val_ap = int(len(ap_names) *val)
+    len_val_pa = int(len(pa_names) *test)
+    len_val_lateral = int(len(lateral_names) * test)
 
     # move for every folder.
 
